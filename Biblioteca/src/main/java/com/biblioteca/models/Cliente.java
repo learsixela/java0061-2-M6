@@ -20,6 +20,16 @@ public class Cliente {
 	@Column(nullable = false, unique = true)
 	private String email;
 	
+	public Cliente() {
+		super();
+	}
+	public Cliente(Long id, String nick, String email) {
+		super();
+		this.id = id;
+		this.nick = nick;
+		this.email = email;
+	}
+	
 	public Long getId() {
 		return id;
 	}
