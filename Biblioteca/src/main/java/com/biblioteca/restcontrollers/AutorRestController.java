@@ -10,7 +10,7 @@ import com.biblioteca.models.Autor;
 import com.biblioteca.repositories.AutorRepository;
 
 @RestController
-@RequestMapping("/autores")
+@RequestMapping("/api/autores")
 public class AutorRestController {
 	//inyeccion de dependencia directa desde Repository
 	

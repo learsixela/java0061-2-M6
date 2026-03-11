@@ -14,8 +14,13 @@ public class AutorService {
 	@Autowired
 	private AutorRepository autorRepository;
 
-	public List<Autor> finAll() {
+	public List<Autor> findAll() {
 		return autorRepository.findAll();
+	}
+
+	public void save(Autor autor) {
+		autorRepository.save(autor);
+		
 	}
 	
 }
