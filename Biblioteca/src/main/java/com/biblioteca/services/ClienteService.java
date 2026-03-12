@@ -41,5 +41,10 @@ public class ClienteService {
 			clienteRepository.delete(cliente1);
 		}
 	}
+
+	public List<Cliente> buscarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
