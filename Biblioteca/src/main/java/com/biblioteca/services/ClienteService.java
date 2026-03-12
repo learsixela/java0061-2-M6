@@ -18,14 +18,28 @@ public class ClienteService {
 	}
 
 	public void save(Cliente cliente) {
+		//crea o actualiza, depende si trae o no el ID
 		clienteRepository.save(cliente);
 	}
 
 	public Cliente findById(Long id) {
-		Cliente cliente1 = clienteRepository.findById(id).get();
+		
 		Cliente cliente2 = clienteRepository.getReferenceById(id);
 		
 		return cliente2;
+	}
+
+	public void deleteById(Long id) {
+		if(clienteRepository.existsById(id)) {
+			clienteRepository.deleteById(id);
+		}
+	}
+	
+	public void delete(Long id) {
+		Cliente cliente1 = clienteRepository.findById(id).get();
+		if (cliente1!= null) {
+			clienteRepository.delete(cliente1);
+		}
 	}
 	
 }
