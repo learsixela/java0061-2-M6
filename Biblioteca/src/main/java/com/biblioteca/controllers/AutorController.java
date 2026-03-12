@@ -24,7 +24,7 @@ public class AutorController {
 		this.autorService2 = autorService;
 	}
 	
-	@GetMapping
+	@GetMapping //http://localhost:8082/autores
 	public String mostrarTodos(Model model) {
 		List<Autor> listaAutores = autorService2.findAll();
 		//enviar la informacion a una vista

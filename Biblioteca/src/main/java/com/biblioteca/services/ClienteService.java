@@ -20,5 +20,12 @@ public class ClienteService {
 	public void save(Cliente cliente) {
 		clienteRepository.save(cliente);
 	}
+
+	public Cliente findById(Long id) {
+		Cliente cliente1 = clienteRepository.findById(id).get();
+		Cliente cliente2 = clienteRepository.getReferenceById(id);
+		
+		return cliente2;
+	}
 	
 }

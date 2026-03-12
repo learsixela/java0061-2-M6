@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.biblioteca.models.Cliente;
 import com.biblioteca.services.ClienteService;
@@ -35,4 +37,23 @@ public class ClienteController {
 		clienteService.save(cliente);
 		return "redirect:/clientes";
 	}
+	
+	//http://localhost:8082/clientes/editar?id=1
+	//desde un formulario
+		@GetMapping("/editar")
+		public String obtenerClienteParametro(@RequestParam Long id) {
+			Cliente cliente = clienteService.findById(id);
+			
+			return "";
+		}
+		
+		//http://localhost:8082/clientes/editar/1
+		@GetMapping("/editar/{id}")
+		public String obtenerClienteRuta(@PathVariable Long id) {
+			Cliente cliente = clienteService.findById(id);
+			
+			return "";
+		}
+		
+		
 }
