@@ -75,11 +75,15 @@ public class ClienteController {
 	}
 	
 	
-	//http://localhost:8082/clientes/buscar?nombre=
+	//http://localhost:8082/clientes/buscar?email=
 	//desde un formulario
 		@GetMapping("/buscar")
-		public String buscar(@RequestParam String nombre, Model model) {
-			List<Cliente> clientes = clienteService.buscarPorNombre(nombre);
+		public String buscar(@RequestParam String nick,
+				@RequestParam String email,
+				Model model) {
+			
+			//List<Cliente> clientes = clienteService.buscarPorEmail(email);
+			List<Cliente> clientes = clienteService.buscar(nick,email);
 			model.addAttribute("listaClientes",clientes);
 			return "clientes/mostrar";		
 		}

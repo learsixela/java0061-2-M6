@@ -42,9 +42,14 @@ public class ClienteService {
 		}
 	}
 
-	public List<Cliente> buscarPorNombre(String nombre) {
+	public List<Cliente> buscarPorEmail(String email) {
+		//ejemplo:  gmail o gmail.com 
+		return clienteRepository.findByEmailContaining(email);
+	}
+
+	public List<Cliente> buscar(String nick, String email) {
 		// TODO Auto-generated method stub
-		return null;
+		return clienteRepository.findByNickContainingAndEmailContaining(nick,email);
 	}
 	
 }
