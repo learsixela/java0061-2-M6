@@ -12,4 +12,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
 	List<Cliente> findByNickContainingAndEmailContaining(String nick, String email);
 
+	List<Cliente> findByNickContainingOrEmailContaining(String nick, String email);
 }

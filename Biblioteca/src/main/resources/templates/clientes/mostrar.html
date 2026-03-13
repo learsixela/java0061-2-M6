@@ -19,13 +19,20 @@
 			</div>
 			<div class="col">
 				<form class="d-flex" role="search" action="#" th:action="@{/clientes/buscar}" method="get">
-				<input class="form-control me-2" type="search" name="nick" placeholder="Buscar cliente por nick" aria-label="Search"/>
+					<input class="form-control me-2" type="search" name="nick" placeholder="Buscar cliente por nick" aria-label="Search"/>
 		        	<input class="form-control me-2" type="search" name="email" placeholder="Buscar cliente por email" aria-label="Search"/>
 		        	<button class="btn btn-outline-success" type="submit">Buscar</button>
 		      	</form>
 			</div>
 		</div>
-		
+		<div class="row">
+			<div class="col">
+				<form class="d-flex" role="search" action="#" th:action="@{/clientes/buscar2}" method="get">
+		        	<input class="form-control me-2" type="search" name="parametro" placeholder="Buscar cliente por nick o email" aria-label="Search"/>
+		        	<button class="btn btn-outline-success" type="submit">Buscar</button>
+		      	</form>
+			</div>
+		</div>
 		
 		<!-- 
 		<h2>Crear Cliente</h2>

@@ -51,5 +51,9 @@ public class ClienteService {
 		// TODO Auto-generated method stub
 		return clienteRepository.findByNickContainingAndEmailContaining(nick,email);
 	}
+
+	public List<Cliente> buscarPorParametro(String parametro) {
+		return clienteRepository.findByNickContainingOrEmailContaining(parametro,parametro);
+	}
 	
 }

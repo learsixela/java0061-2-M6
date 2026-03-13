@@ -87,7 +87,14 @@ public class ClienteController {
 			model.addAttribute("listaClientes",clientes);
 			return "clientes/mostrar";		
 		}
-		
+		@GetMapping("/buscar2")
+		public String buscar2(@RequestParam String parametro,
+				Model model) {
+			
+			List<Cliente> clientes = clienteService.buscarPorParametro(parametro);
+			model.addAttribute("listaClientes",clientes);
+			return "clientes/mostrar";		
+		}
 
 		
 
