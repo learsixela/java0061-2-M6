@@ -18,6 +18,11 @@ public class MiServicio {
 		return miRepository.obtenerTodosLosUsuarios();
 	}
 
+	public void guardarUsuario(Usuario usuario) {
+		miRepository.guardarUsuario(usuario);
+		
+	}
+
 
 	
 

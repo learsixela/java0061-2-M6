@@ -29,5 +29,11 @@ public class MiRepository {
 				return usuario;
 				});
 	}
+
+	public void guardarUsuario(Usuario usuario) {
+		String sql = "INSERT INTO usuarios (email, nombre,password) values(?,?,?)";
+		jdbcTemplate.update(sql,usuario.getEmail(),usuario.getNombre(),usuario.getPassword());
+		
+	}
 	
 }

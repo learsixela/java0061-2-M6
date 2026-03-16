@@ -3,6 +3,8 @@ package com.biblioteca.restcontrollers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +24,13 @@ public class MiControlador {
 	
 	@GetMapping
 	public List<Usuario> obtenerTodosLosUsuarios(){
-		
 		return usuarioServicio.obtenerTodosLosUsuarios();
+	}
+	
+	@PostMapping("/crear")
+	public void crear(@RequestBody Usuario usuario) {
+		
+		usuarioServicio.guardarUsuario(usuario);
 	}
 
 }
