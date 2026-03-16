@@ -36,4 +36,14 @@ public class MiRepository {
 		
 	}
 	
+	public void actualizarUsuario(Usuario usuario) {
+		String sql = "UPDATE usuarios SET email=?, nombre=?, password=? WHERE id=?";
+		jdbcTemplate.update(sql,usuario.getEmail(),usuario.getNombre(),usuario.getPassword(),usuario.getId());
+	}
+	
+	public void eliminarUsuario(int id) {
+		String sql = "DELETE FROM usuarios WHERE id = ?";
+		jdbcTemplate.update(sql,id);
+	}
+	
 }

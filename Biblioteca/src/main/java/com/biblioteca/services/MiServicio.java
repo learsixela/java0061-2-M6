@@ -20,11 +20,14 @@ public class MiServicio {
 
 	public void guardarUsuario(Usuario usuario) {
 		miRepository.guardarUsuario(usuario);
-		
 	}
 
-
+	public void actualizarUsuario(Usuario usuario) {
+		miRepository.actualizarUsuario(usuario);
+	}
 	
-
+	public void eliminarUsuario(int id) {
+		miRepository.eliminarUsuario(id);
+	}
 
 }
