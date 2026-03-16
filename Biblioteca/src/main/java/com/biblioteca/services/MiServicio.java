@@ -30,4 +30,8 @@ public class MiServicio {
 		miRepository.eliminarUsuario(id);
 	}
 
+	public Usuario buscarPorId(int id) {
+		return miRepository.buscarPorId(id);
+	}
+
 }

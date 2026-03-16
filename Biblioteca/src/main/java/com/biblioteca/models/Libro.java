@@ -12,7 +12,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="libros")
-public class Libro {
+public class Libro  extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

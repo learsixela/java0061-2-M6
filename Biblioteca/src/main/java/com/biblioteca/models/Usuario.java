@@ -7,6 +7,17 @@ public class Usuario {
 	private String nombre;
 	private String password;
 
+	public Usuario() {
+		super();
+	}
+	
+	public Usuario(int id, String email, String nombre, String password) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.nombre = nombre;
+		this.password = password;
+	}
 	
 	public int getId() {
 		return id;

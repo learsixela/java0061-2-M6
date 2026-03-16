@@ -35,6 +35,19 @@ public class MiControlador {
 		usuarioServicio.guardarUsuario(usuario);
 	}
 	
+	@GetMapping("/{id}")
+	public Usuario buscarPorId(@PathVariable int id) {
+		Usuario usuario = usuarioServicio.buscarPorId(id);
+		
+		if(usuario == null) {
+			throw new RuntimeException("Usuario no encontrado");
+		}
+		
+		return usuario;
+		
+		//return usuarioServicio.buscarPorId(id);
+	}
+	
 	@PutMapping("/{id}")
 	public void actualizar(@PathVariable int id, @RequestBody Usuario usuario) {
 		usuario.setId(id);

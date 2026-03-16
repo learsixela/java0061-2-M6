@@ -45,5 +45,18 @@ public class MiRepository {
 		String sql = "DELETE FROM usuarios WHERE id = ?";
 		jdbcTemplate.update(sql,id);
 	}
+
+	public Usuario buscarPorId(int id) {
+		String sql = "select * from usuarios WHERE id = ?";
+		
+		try {
+			return jdbcTemplate.queryForObject(sql, (rs,rowNum) -> 				
+			new Usuario(rs.getInt("id"),rs.getString("email"),rs.getString("nombre"),rs.getString("password")) 
+			,id);
+		}catch (Exception e) {
+			System.out.println("Error:" + e.toString());
+			return null;
+		}
+	}
 	
 }

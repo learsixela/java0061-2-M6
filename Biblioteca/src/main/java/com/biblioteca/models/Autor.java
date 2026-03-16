@@ -1,23 +1,17 @@
 package com.biblioteca.models;
 
 
-import java.util.Date;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="autores")
-public class Autor {
+public class Autor extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,12 +22,6 @@ public class Autor {
 	@NotNull
 	private String nacionalidad;
 	
-	@Column(updatable = false)
-	private Date createdAt;
-	
-	private Date updatedAt;
-	
-	//private Date deletedAt;
 	
 	public Long getId() {
 		return id;
@@ -52,18 +40,6 @@ public class Autor {
 	}
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
-	}
-	
-	// ejecutarse antes de insertar
-	@PrePersist
-	protected void onCreate() {
-		createdAt= new Date();
-	}
-	
-	// ejecutar antes de actualizar
-	@PreUpdate
-	protected void onUpdate() {
-		updatedAt= new Date();
 	}
 	
 }
