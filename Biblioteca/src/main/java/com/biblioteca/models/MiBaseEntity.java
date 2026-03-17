@@ -8,7 +8,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 
 @MappedSuperclass
-public abstract class BaseEntity {
+public abstract class MiBaseEntity {
 
 	@Column(updatable = false)
 	private LocalDateTime createdAt;

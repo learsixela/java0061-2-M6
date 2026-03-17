@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
@@ -12,7 +14,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="libros")
-public class Libro  extends BaseEntity{
+public class Libro  extends MiBaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -24,6 +26,15 @@ public class Libro  extends BaseEntity{
 	@Max(150)
 	@Column(nullable = false, unique = true)
 	private String titulo;
+	/*OneToOne Autor*/
+	/*@OneToOne
+	@JoinColumn(name = "autor_id")
+	private Autor autor;
+	
+	private int anio;
+	*/
+	
+	
 	
 	public String getIsbn() {
 		return isbn;

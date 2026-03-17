@@ -58,6 +58,7 @@
 					<th>ID</th>
 					<th>Nick</th>
 					<th>Email</th>
+					<th>Licencia Id</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -66,6 +67,8 @@
 					<td  th:text="${cliente.id}"> </td>
 					<td  th:text="${cliente.nick}"> </td>
 					<td  th:text="${cliente.email}"> </td>
+					<td  th:if="${cliente.licencia != null}" th:text="${cliente.licencia.id}"> </td>
+					<td  th:if="${cliente.licencia == null}">Sin licencia </td>
 					<td>
 					<a th:href="@{/clientes/editar/{id} (id=${cliente.id})  }">Editar</a>
 					<a th:href="@{/clientes/editar?id={id} (id=${cliente.id})  }">Editar</a> - 

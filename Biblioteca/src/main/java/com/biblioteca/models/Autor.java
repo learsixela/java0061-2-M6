@@ -5,13 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="autores")
-public class Autor extends BaseEntity{
+public class Autor extends MiBaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -21,6 +22,12 @@ public class Autor extends BaseEntity{
 	
 	@NotNull
 	private String nacionalidad;
+	
+	/*OneToOne Libro*/
+	/*@OneToOne(mappedBy = "libro")
+	private Libro libro;
+	*/
+	
 	
 	
 	public Long getId() {
