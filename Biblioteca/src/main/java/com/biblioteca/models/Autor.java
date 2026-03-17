@@ -1,10 +1,14 @@
 package com.biblioteca.models;
 
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -23,13 +27,18 @@ public class Autor extends MiBaseEntity{
 	@NotNull
 	private String nacionalidad;
 	
-	/*OneToOne Libro*/
-	/*@OneToOne(mappedBy = "libro")
-	private Libro libro;
-	*/
+	/*OneToMany*/
+	//un autor tiene muchos libros
+	@OneToMany(mappedBy = "autor",fetch = FetchType.LAZY)
+	private List<Libro> libros;
 	
 	
-	
+	public List<Libro> getLibros() {
+		return libros;
+	}
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
+	}
 	public Long getId() {
 		return id;
 	}
