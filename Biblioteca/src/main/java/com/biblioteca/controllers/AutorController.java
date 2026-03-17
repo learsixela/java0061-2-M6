@@ -29,10 +29,9 @@ public class AutorController {
 		List<Autor> listaAutores = autorService2.findAll();
 		//enviar la informacion a una vista
 		model.addAttribute("listaAutores",listaAutores);
-		model.addAttribute("autor", new Autor());
 		
 		//llamado a la vista
-		return "autores/mostrar";
+		return "autores/index";
 	}
 	
 	@PostMapping("/guardar")

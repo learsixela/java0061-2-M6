@@ -1,5 +1,7 @@
 package com.biblioteca.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class LibroService {
 	public Libro guardar(Libro libro) {
 	
 		return libroRepository.save(libro);
+	}
+	
+	public List<Libro> findAll(){
+		return libroRepository.findAll();
 	}
 	
 	

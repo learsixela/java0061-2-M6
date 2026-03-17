@@ -27,7 +27,8 @@ public class LibroController {
 	private LibroService libroService;
 	
 	@RequestMapping("")
-	public String inicio() {
+	public String inicio(Model model) {
+		model.addAttribute("listaLibros",libroService.findAll());
 		return "libros/index";
 	}
 	
@@ -53,6 +54,6 @@ public class LibroController {
 	@PostMapping("/guardar")
 	public String guardar(@ModelAttribute Libro libro) {
 		libroService.guardar(libro);
-		return "libros/index";
+		return "redirect:/libros";
 	}
 }
