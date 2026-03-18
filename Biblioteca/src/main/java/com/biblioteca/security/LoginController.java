@@ -26,5 +26,9 @@ public class LoginController {
 	public String home() {
 		return "home";
 	}
+	@GetMapping("/registro")
+	public String registro() {
+		return "security/registro";
+	}
 	
 }

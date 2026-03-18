@@ -17,7 +17,7 @@ import com.biblioteca.services.AutorService;
 import com.biblioteca.services.LibroService;
 
 @Controller
-@RequestMapping("/libros")
+@RequestMapping("/user/libros")
 public class LibroController {
 	
 	@Autowired
