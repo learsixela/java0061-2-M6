@@ -38,6 +38,11 @@
 					<td  th:text="${autor.nacionalidad}"> </td>
 					<!-- como visualizar los libros por autor -->
 					<td>
+						<ul>
+					        <li th:each="libro : ${autor.libros}"
+					            th:text="${libro.titulo}">
+					        </li>
+					    </ul>
 					</td>
 					<td>
 					</td>
