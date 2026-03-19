@@ -22,6 +22,7 @@ public class SecurityConfig { //extends WebSecurityConfigurerAdapter{
         http
             .authorizeHttpRequests(authz -> authz
                 .requestMatchers("/").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/img/**", "/**").permitAll() 
                 .requestMatchers("/home").authenticated()
                 .requestMatchers("/private/**").authenticated()
                 .requestMatchers("/api/**").authenticated()
