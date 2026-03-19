@@ -28,8 +28,8 @@ public class SecurityConfig { //extends WebSecurityConfigurerAdapter{
                 .requestMatchers("/api/**").authenticated()
                 //.requestMatchers("/admin/**").hasRole("ADMIN")
                 //.requestMatchers("/user/**").hasRole("USER")
-                .anyRequest().permitAll()
-                //.anyRequest().authenticated()
+                //.anyRequest().permitAll()
+                .anyRequest().authenticated()
             )
             .formLogin(login -> login
                 .loginPage("/login")

@@ -37,7 +37,7 @@ public class LoginController {
 		return "home";
 	}
 	
-	@GetMapping("/registro")
+	@GetMapping("/registrar")
 	public String registro(Model model) {
 		model.addAttribute("userDTO",new UserDTO());
 		model.addAttribute("titulo","Registro de Usuario");

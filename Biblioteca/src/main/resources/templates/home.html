@@ -40,8 +40,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 							<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="login">Login</a></li>
 									<li><a class="dropdown-item" href="registrar">Registro</a></li>
-									<li><a class="dropdown-item" href="usuario/editar">Editar perfil</a></li>
-									<li><a class="dropdown-item" href="logout">Cierre de Sesión</a></li>
+									<li><a class="dropdown-item" href="usuario/editar">Editar perfil</a></li>						
+									<li sec:authorize="isAuthenticated()">
+										<form th:action="@{/logout}" method="post" >
+											<button type="submit">Cerrar sesión</button>
+										</form>
+									</li>
 							</ul>
 						</li>
 					</ul>
