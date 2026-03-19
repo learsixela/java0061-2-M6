@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.biblioteca.models.Usuario;
+import com.biblioteca.models.Usuario1;
 
 @Repository
 public class MiRepository {
@@ -15,12 +15,12 @@ public class MiRepository {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public List<Usuario> obtenerTodosLosUsuarios(){
+	public List<Usuario1> obtenerTodosLosUsuarios(){
 		//query
 		String sql = "select * from usuarios";
 		
 		return jdbcTemplate.query(sql, (rs,rowNum) -> {
-				Usuario usuario = new Usuario();
+				Usuario1 usuario = new Usuario1();
 				usuario.setId(rs.getInt("id"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setNombre(rs.getString("nombre"));
@@ -30,13 +30,13 @@ public class MiRepository {
 				});
 	}
 
-	public void guardarUsuario(Usuario usuario) {
+	public void guardarUsuario(Usuario1 usuario) {
 		String sql = "INSERT INTO usuarios (email, nombre,password) values(?,?,?)";
 		jdbcTemplate.update(sql,usuario.getEmail(),usuario.getNombre(),usuario.getPassword());
 		
 	}
 	
-	public void actualizarUsuario(Usuario usuario) {
+	public void actualizarUsuario(Usuario1 usuario) {
 		String sql = "UPDATE usuarios SET email=?, nombre=?, password=? WHERE id=?";
 		jdbcTemplate.update(sql,usuario.getEmail(),usuario.getNombre(),usuario.getPassword(),usuario.getId());
 	}
@@ -46,12 +46,12 @@ public class MiRepository {
 		jdbcTemplate.update(sql,id);
 	}
 
-	public Usuario buscarPorId(int id) {
+	public Usuario1 buscarPorId(int id) {
 		String sql = "select * from usuarios WHERE id = ?";
 		
 		try {
 			return jdbcTemplate.queryForObject(sql, (rs,rowNum) -> 				
-			new Usuario(rs.getInt("id"),rs.getString("email"),rs.getString("nombre"),rs.getString("password")) 
+			new Usuario1(rs.getInt("id"),rs.getString("email"),rs.getString("nombre"),rs.getString("password")) 
 			,id);
 		}catch (Exception e) {
 			System.out.println("Error:" + e.toString());

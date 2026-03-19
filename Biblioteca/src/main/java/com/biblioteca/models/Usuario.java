@@ -1,47 +1,75 @@
 package com.biblioteca.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+@Entity
+@Table(name="usuarios")
 public class Usuario {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String email;
-	private String nombre;
+	
+	private String username;
 	private String password;
+	@Transient
+	private String passwordConfirmation;
+	
+	//variante : trabajar con Tabla roles
+	private String role;
 
-	public Usuario() {
-		super();
-	}
-	
-	public Usuario(int id, String email, String nombre, String password) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.nombre = nombre;
-		this.password = password;
-	}
-	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getNombre() {
-		return nombre;
+
+	public String getUsername() {
+		return username;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPasswordConfirmation() {
+		return passwordConfirmation;
+	}
+
+	public void setPasswordConfirmation(String passwordConfirmation) {
+		this.passwordConfirmation = passwordConfirmation;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	

@@ -3,15 +3,19 @@ package com.biblioteca.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.biblioteca.dtos.UserDTO;
-import com.biblioteca.models.User;
+import com.biblioteca.models.Usuario;
 import com.biblioteca.repositories.UserRepository;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserDetailsService, UserService{
 
 	private final PasswordEncoder passwordEncoder;
 	
@@ -24,7 +28,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void saveUser(UserDTO userDTO) {
-		/*User user = new User();
+		/*Usuario user = new Usuario();
 		user.setEmail(userDTO.getEmail());
 		user.setUsername(userDTO.getUsername());
 		user.setRole(userDTO.getRole());
@@ -34,13 +38,13 @@ public class UserServiceImpl implements UserService{
 		//
 		userRepo.save(user);
 		*/
-		User user = mapeoDTOaUser(userDTO);
+		Usuario user = mapeoDTOaUser(userDTO);
 		
 		userRepo.save(user);
 	}
 	
-	private User mapeoDTOaUser(UserDTO userDTO) {
-		User user = new User();
+	private Usuario mapeoDTOaUser(UserDTO userDTO) {
+		Usuario user = new Usuario();
 		user.setEmail(userDTO.getEmail());
 		user.setUsername(userDTO.getUsername());
 		user.setRole(userDTO.getRole());
@@ -51,8 +55,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User findByEmail(String email) {
-		User user = userRepo.findByEmail(email);
+	public Usuario findByEmail(String email) {
+		Usuario user = userRepo.findByEmail(email);
 		if(user == null) {
 			return null;
 		}
@@ -60,7 +64,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User findByUsername(String username) {
+	public Usuario findByUsername(String username) {
 		return userRepo.findByUsername(username);
 	}
 
@@ -71,9 +75,20 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<User> findAllUsers() {
+	public List<Usuario> findAllUsers() {
 		
 		return userRepo.findAll();
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Usuario usuario = userRepo.findByUsername(username);
+		UserDetails user = User.builder()
+				.username(usuario.getUsername())
+				.password(usuario.getPassword()) 
+				.roles(usuario.getRole()) 
+				.build();
+		return user;
 	}
 	
 

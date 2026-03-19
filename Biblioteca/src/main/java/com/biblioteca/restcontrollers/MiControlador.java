@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.biblioteca.models.Usuario;
+import com.biblioteca.models.Usuario1;
 import com.biblioteca.services.MiServicio;
 
 @RestController
@@ -26,18 +26,18 @@ public class MiControlador {
 	}
 	
 	@GetMapping
-	public List<Usuario> obtenerTodosLosUsuarios(){
+	public List<Usuario1> obtenerTodosLosUsuarios(){
 		return usuarioServicio.obtenerTodosLosUsuarios();
 	}
 	
 	@PostMapping("/crear")
-	public void crear(@RequestBody Usuario usuario) {
+	public void crear(@RequestBody Usuario1 usuario) {
 		usuarioServicio.guardarUsuario(usuario);
 	}
 	
 	@GetMapping("/{id}")
-	public Usuario buscarPorId(@PathVariable int id) {
-		Usuario usuario = usuarioServicio.buscarPorId(id);
+	public Usuario1 buscarPorId(@PathVariable int id) {
+		Usuario1 usuario = usuarioServicio.buscarPorId(id);
 		
 		if(usuario == null) {
 			throw new RuntimeException("Usuario no encontrado");
@@ -49,7 +49,7 @@ public class MiControlador {
 	}
 	
 	@PutMapping("/{id}")
-	public void actualizar(@PathVariable int id, @RequestBody Usuario usuario) {
+	public void actualizar(@PathVariable int id, @RequestBody Usuario1 usuario) {
 		usuario.setId(id);
 		usuarioServicio.actualizarUsuario(usuario);
 	}
