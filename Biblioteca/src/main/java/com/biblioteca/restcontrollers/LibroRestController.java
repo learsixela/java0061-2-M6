@@ -3,6 +3,7 @@ package com.biblioteca.restcontrollers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +35,7 @@ public class LibroRestController {
 	}
 	
 	@PutMapping("/{id}")
-	public String actualizarLibro(@PathVariable Long id) {
+	public  ResponseEntity<String> actualizarLibro(@PathVariable Long id) {
 		Libro libro = libroService.findById(id);
 		//llenar los datos
 		libro.setTitulo("");
@@ -42,12 +43,12 @@ public class LibroRestController {
 		libro.setIsbn(null);
 		
 		libroService.save(libro);
-		return "";
+		return ResponseEntity.ok("Libro actualizado");
 	}
 	
 	@DeleteMapping("/{id}")
-	public String eliminarLibro(@PathVariable Long id) {
+	public ResponseEntity<String> eliminarLibro(@PathVariable Long id) {
 		libroService.delete(id);
-		return "Libro eliminado";
+		return ResponseEntity.ok("Libro eliminado");
 	}
 }
