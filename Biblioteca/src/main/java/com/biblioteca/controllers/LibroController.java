@@ -53,7 +53,7 @@ public class LibroController {
 	
 	@PostMapping("/guardar")
 	public String guardar(@ModelAttribute Libro libro) {
-		libroService.guardar(libro);
+		libroService.save(libro);
 		return "redirect:/libros";
 	}
 }
